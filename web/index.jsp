@@ -1,16 +1,16 @@
 <%--
   Created by IntelliJ IDEA.
-  User: Administrator
+  User: Jason Song(wolfogre.com)
   Date: 03/23/2016
-  Time: 12:57
+  Time: 13:46
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
-    <title>HelloWorld</title>
+    <title>$Title$</title>
   </head>
   <body>
-  Test HelloWorld
+  $END$
   </body>
 </html>
