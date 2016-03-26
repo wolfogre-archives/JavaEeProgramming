@@ -14,7 +14,8 @@
 <%
     String name = request.getParameter("userName");
     String password = request.getParameter("password");
-    if(name.equals("abc")&& password.equals("123")) {
+    String errInfo = "yes";
+    if(name.equals(password)) {
 %>
 <jsp:forward page="afterLogin.jsp">
     <jsp:param name="userName" value="<%=name%>"/>
@@ -23,7 +24,9 @@
 }
 else {
 %>
-<jsp:forward page="index.jsp"/>
+<jsp:forward page="index.jsp">
+    <jsp:param name="errInfo" value="<%=errInfo%>"/>
+</jsp:forward>
 <%
     }
 %>
