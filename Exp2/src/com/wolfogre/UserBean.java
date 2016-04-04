@@ -9,9 +9,9 @@ public class UserBean implements java.io.Serializable{
 	private String passwordAgain;
 	private String sex;
 	private int age;
-	//private String country;
-	//private String mail;
-	//private String telephone;
+	private String country;
+	private String mail;
+	private String telephone;
 
 	public UserBean() {
 	}
@@ -54,5 +54,29 @@ public class UserBean implements java.io.Serializable{
 
 	public void setAge(int age) {
 		this.age = age;
+	}
+
+	public String getMail() {
+		return mail;
+	}
+
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+	public String getTelephone() {
+		return telephone;
+	}
+
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
 	}
 }

@@ -14,6 +14,25 @@
 <body>
 <jsp:useBean id="new_user" class="com.wolfogre.UserBean" scope="request"/>
 <jsp:setProperty name="new_user" property="*"/>
-<jsp:getProperty name="new_user" property="username"/>
+<%
+    String errType = "none";
+    if(errType.equals("none") && new_user.getPassword() == null || new_user.getPasswordAgain() == null)
+        errType = "empty_password";
+    if(errType.equals("none") && !new_user.getPassword().equals(new_user.getPasswordAgain()))
+        errType = "diff_password";
+    if(errType.equals("none")){
+%>
+<jsp:forward page="afterRegister.jsp"/>
+<%
+    }
+    else {
+%>
+<jsp:forward page="register.jsp">
+    <jsp:param name="errType" value="<%=errType%>"/>
+</jsp:forward>
+<%
+    }
+%>
+
 </body>
 </html>

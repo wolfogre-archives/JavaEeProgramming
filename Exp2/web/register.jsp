@@ -19,14 +19,10 @@
     <h1 align="center">欢迎注册</h1>
     <%
         String errType = request.getParameter("errType");
-        if("empty_username".equals(errType))
-            out.println("<div class=\"alert alert-danger\" role=\"alert\">用户名不能为空！</div>");
         if("empty_password".equals(errType))
             out.println("<div class=\"alert alert-danger\" role=\"alert\">密码不能为空！</div>");
-        if("wrong_username".equals(errType))
-            out.println("<div class=\"alert alert-danger\" role=\"alert\">用户名不存在！</div>");
-        if("wrong_password".equals(errType))
-            out.println("<div class=\"alert alert-danger\" role=\"alert\">密码错误！</div>");
+        if("diff_password".equals(errType))
+            out.println("<div class=\"alert alert-danger\" role=\"alert\">两次输入的密码不一致！</div>");
     %>
     <form name="loginForm" method="post" action="checkRegister.jsp" >
         <div class="form-group">
@@ -50,9 +46,26 @@
             <label>年龄:</label>
             <input type="number" name="age" placeholder="请输入年龄">
         </div>
+        <div class="form-group">
+            <label>国籍:</label>
+            <select name="country">
+                <option value ="CN">中国</option>
+                <option value ="US">美国</option>
+                <option value="JP">日本</option>
+                <option value="DE">德国</option>
+                <option value="OTHER">其它</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>邮箱</label>
+            <input type="email" name="mail" class="form-control" placeholder="请输入邮箱">
+        </div>
+        <div class="form-group">
+            <label>电话</label>
+            <input type="tel" name="telephone" class="form-control" placeholder="请输入电话">
+        </div>
         <button type="submit" class="btn btn-default">注册</button>
         <button type="reset" class="btn btn-default">重置</button>
-        <a href=""></a>
     </form>
 
 </div>

@@ -15,24 +15,32 @@
     <title>注册成功</title>
 </head>
 <body>
-<jsp:useBean id="me"
-             class="com.wolfogre.UserBean">
-    <jsp:setProperty name="me" property="username"
-                     value="Jason Song"/>
-    <jsp:setProperty name="me" property="age"
-                     value="23"/>
-    <jsp:setProperty name="me" property="sex"
-                     value="male"/>
-</jsp:useBean>
+<jsp:useBean id="new_user" class="com.wolfogre.UserBean" scope="request"/>
 
-<p>My Name:
-    <jsp:getProperty name="me" property="username"/>
-</p>
-<p>My Last Name:
-    <jsp:getProperty name="me" property="age"/>
-</p>
-<p>My Age:
-    <jsp:getProperty name="me" property="sex"/>
-</p>
+<div style="width:50%;margin-left:auto;margin-right:auto;">
+    <h1 align="center">恭喜！注册成功！</h1>
+    <div style="width:300px;margin-left:auto;margin-right:auto;background-color:antiquewhite">
+        <h2>注册名：<jsp:getProperty name="new_user" property="username"/></h2>
+        <h2>密码：<jsp:getProperty name="new_user" property="password"/></h2>
+        <h2>性别：<%="male".equals(new_user.getSex())?"男":"女"%></h2>
+        <h2>国籍：<%
+            if("CN".equals(new_user.getCountry()))
+                out.print("中国");
+            if("US".equals(new_user.getCountry()))
+                out.print("美国");
+            if("JP".equals(new_user.getCountry()))
+                out.print("日本");
+            if("DE".equals(new_user.getCountry()))
+                out.print("德国");
+            if("OTHER".equals(new_user.getCountry()))
+                out.print("其它");
+        %></h2>
+        <h2>邮箱：<jsp:getProperty name="new_user" property="mail"/></h2>
+        <h2>电话：<jsp:getProperty name="new_user" property="telephone"/></h2>
+    </div>
+    <h1 align="center">但是很遗憾，您尚未访问<a href="http://blog.wolfogre.com">狼煞博客</a></h1>
+    <h1 align="center">访问1000次以后便可以<a href="index.jsp">登录</a></h1>
+</div>
+
 </body>
 </html>
