@@ -11,6 +11,6 @@
     <title>$Title$</title>
   </head>
   <body>
-  <a href="ManageUsers.jsp">用户管理</a>
+  <a href="ManageUsers">用户管理</a>
   </body>
 </html>
