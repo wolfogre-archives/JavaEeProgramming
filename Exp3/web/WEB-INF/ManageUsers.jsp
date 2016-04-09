@@ -1,5 +1,7 @@
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="com.wolfogre.DbDao" %>
+<%@ page import="java.util.List" %>
+<%@ page import="jdk.internal.util.xml.impl.Pair" %>
 <%--
   Created by IntelliJ IDEA.
   User: Jason Song(wolfogre.com)
@@ -19,29 +21,47 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
     <title>用户表管理</title>
 </head>
 <body>
+<%
+    List<String> tableTitles = (List<String>)request.getAttribute("table_titles");
+    List<String[]> tableLines = (List<String[]>)request.getAttribute("table_lines");
+%>
+<form action="UpdateUsers">
 <table border=1px width=100%>
-    <h3>联系人信息</h3>
+    <h3>用户信息</h3>
     <tr>
-        <th>编号</th> <th>姓名</th> <th>电话</th> <th>QQ</th> <th>Email</th>
-    </tr>
     <%
-        DbDao dbDao = new DbDao("com.mysql.jdbc.Driver","jdbc:mysql://localhost:3306/shopdb","root", "DBlocal");
-        ResultSet resultSet = dbDao.query("select * from user");
-        while(resultSet.next()){
-    %>
-    <tr>
-        <td><%=resultSet.getInt(1)%></td>
-        <td><%=resultSet.getString("id")  %></td>
-        <td><%=resultSet.getString(2)   %></td>
-        <td><%=resultSet.getLong(3)   %></td>
-    </tr>
-    <%
+        if(tableTitles != null)
+        for(String title: tableTitles) {
+            out.print("<th>" + title + "</th>");
         }
     %>
+        <th>操作</th>
+        <!--<th>编号</th> <th>姓名</th> <th>密码</th><th><input type="submit" name="delete_data" value="删除所选"/></th>-->
+    </tr>
+    <%
+        for(String[] line: tableLines) {
+            out.print("<tr>");
+            for (String data : line) {
+                out.print("<td>" + data + "</td>");
+            }
+            out.print("<td><input type=\"checkbox\" name=\"cb_delete_\"></td>");
+            out.print("</tr>");
+        }
+    %>
+    <tr>
+        <td><input disabled="disabled" type="text" name="id" class="form-control" placeholder="由系统分配"></td>
+
+        <td><input type="text" name="new_username" class="form-control" placeholder="用户名"></td>
+        <td><input type="text" name="new_password" class="form-control" placeholder="密码"></td>
+        <td><input type="submit" name="new_data" value="新增记录"/></td>
+    </tr>
+
 </table>
+
+</form>
 </body>
 </html>
