@@ -47,7 +47,7 @@ public class UpdateUsersServlet extends HttpServlet {
 			}
 			if(req.getParameter("new_data") != null){
 				if(req.getParameter("new_username").isEmpty() || req.getParameter("new_password").isEmpty())
-					throw new Exception("username and password can not be empty");
+					throw new Exception("用户名和密码不能为空");
 				dbDao.insert("insert into user (username, password) values(?,?)",req.getParameter("new_username"), req.getParameter("new_password"));
 			}
 		}catch ( Exception e){

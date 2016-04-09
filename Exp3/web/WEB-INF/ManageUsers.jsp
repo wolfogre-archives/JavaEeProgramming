@@ -25,11 +25,62 @@
     <title>用户表管理</title>
 </head>
 <body>
+<h1 align="center">用户信息管理</h1>
+
 <%
-    List<String> tableTitles = (List<String>)request.getAttribute("table_titles");
-    List<String[]> tableLines = (List<String[]>)request.getAttribute("table_lines");
+	String error = (String)request.getAttribute("error");
+	if(error != null && !error.isEmpty()){
 %>
-<form action="UpdateUsers">
+<div style="width:50%; height:30px" class="center-block" align="center">
+	<p style="font-size:large;height:100%" class="bg-danger"><strong>错误：<%=error%></strong></p>
+</div>
+<%
+	}
+%>
+
+<div style="width:90%;" class="center-block">
+	<p align="right" class="lead"><a href="index.jsp" >回到主页</a></p>
+	<form action="UpdateUsers">
+		<table class="table table-striped table-bordered table-hover table-condensed">
+			<tr>
+				<th width="10%">编号</th>
+				<th>用户名</th>
+				<th>密码</th>
+				<th width="60px"><input type="submit" name="delete_data" value="删除"/></th>
+			</tr>
+			<%
+				List<String[]> tableLines = (List<String[]>)request.getAttribute("table_lines");
+				if(tableLines != null)
+					for(String[] line: tableLines) {
+						out.println("<tr>");
+						for (String data : line) {
+							out.println("<td>" + data + "</td>");
+						}
+						out.println("<td><input  type=\"checkbox\" name=\"cb_delete_" + line[0] + "\"/></td>");
+						out.println("</tr>");
+					}
+			%>
+			<tr>
+				<td><input type="text" class="form-control" placeholder="编号" readonly></td>
+				<td><input type="text" name="new_username" class="form-control" placeholder="输入用户名"></td>
+				<td><input type="text" name="new_password" class="form-control" placeholder="输入密码"></td>
+				<td><input type="submit" name="new_data" value="新增"/></td>
+
+			</tr>
+		</table>
+	</form>
+</div>
+
+
+
+
+
+
+
+
+
+
+<%--
 <table border=1px width=100%>
     <h3>用户信息</h3>
     <tr>
@@ -44,7 +95,7 @@
     </tr>
     <%
         for(String[] line: tableLines) {
-            out.print("<tr>");
+            out.print("<tr><td>");
             for (String data : line) {
                 out.print("<td>" + data + "</td>");
             }
@@ -63,5 +114,6 @@
 </table>
 
 </form>
+--%>
 </body>
 </html>

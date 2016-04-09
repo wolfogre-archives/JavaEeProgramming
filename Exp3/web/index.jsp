@@ -8,9 +8,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
-    <title>$Title$</title>
+    <title>Exp3</title>
   </head>
   <body>
-  <a href="ManageUsers">用户管理</a>
+  <h1 align="center">网上购物</h1>
+  <h2 align="center"><a href="ManageUsers">用户信息管理</a></h2>
   </body>
 </html>
