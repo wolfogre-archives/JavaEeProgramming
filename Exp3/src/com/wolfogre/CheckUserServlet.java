@@ -41,7 +41,7 @@ public class CheckUserServlet extends HttpServlet {
 			if (!resultSet.next())
 				throw new Exception("用户名或密码不正确");
 			req.setAttribute("user_id", resultSet.getInt("id"));
-			RequestDispatcher requestDispatcher = req.getRequestDispatcher("/WEB-INF/Shopping.jsp");
+			RequestDispatcher requestDispatcher = req.getRequestDispatcher("/Shopping");
 			requestDispatcher.forward(req, res);
 		} catch (Exception e) {
 			req.setAttribute("error", e.getMessage());
