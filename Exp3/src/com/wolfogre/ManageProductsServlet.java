@@ -12,8 +12,8 @@ import java.util.List;
 /**
  * Created by Jason Song(wolfogre.com) on 2016/4/9.
  */
-@WebServlet(name = "ManageUsers", urlPatterns = {"/ManageUsers"})
-public class ManageUsersServlet extends HttpServlet {
+@WebServlet(name = "ManageProducts", urlPatterns = {"/ManageProducts"})
+public class ManageProductsServlet extends HttpServlet {
 	private DbDao dbDao;
 
 	@Override
@@ -34,22 +34,19 @@ public class ManageUsersServlet extends HttpServlet {
 
 	@Override
 	public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {
-		//super.service(req, res);
-		//父类HttpServlet的service方法默认实现是返回状态代码为405的HTTP错误表示对于指定资源的请求方法不被允许。
 		RequestDispatcher requestDispatcher;
 		try{
-
-			ResultSet resultSet = dbDao.query("select * from user");
+			ResultSet resultSet = dbDao.query("select * from ProductTable");
 			List<String[]> tableLines = new ArrayList<String[]>();
 			while(resultSet.next()){
-				String newLine[] = {String.valueOf(resultSet.getInt(1)), resultSet.getString(2), resultSet.getString(3)};
+				String newLine[] = {String.valueOf(resultSet.getInt(1)), resultSet.getString(2), resultSet.getString(3),resultSet.getString(4)};
 				tableLines.add(newLine);
 			}
 			req.setAttribute("table_lines", tableLines);
 		}catch ( Exception e){
 			req.setAttribute("error", e.getMessage());
 		}
-		requestDispatcher = req.getRequestDispatcher("/WEB-INF/ManageUsers.jsp");
+		requestDispatcher = req.getRequestDispatcher("/WEB-INF/ManageProducts.jsp");
 		requestDispatcher.forward(req, res);
 	}
 }

@@ -1,19 +1,10 @@
-<%@ page import="java.sql.ResultSet" %>
-<%@ page import="com.wolfogre.DbDao" %>
 <%@ page import="java.util.List" %>
-<%@ page import="jdk.internal.util.xml.impl.Pair" %>
 <%--
   Created by IntelliJ IDEA.
   User: Jason Song(wolfogre.com)
   Date: 2016/4/8
   Time: 11:14
   To change this template use File | Settings | File Templates.
---%>
-<%--
-将jsp放在WEB-INF文件夹下可以阻止用户直接访问jsp，
-而必须访问Servlet，再由Servlet来跳转，
-但这不是最佳办法，访问Servlet本身就不是最佳办法，
-继续学习
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -22,10 +13,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/bootstrap.css">
-    <title>用户表管理</title>
+    <title>商品表管理</title>
 </head>
 <body>
-<h1 align="center">用户信息管理</h1>
+<h1 align="center">商品信息管理</h1>
 
 <%
 	String error = (String)request.getAttribute("error");
@@ -40,12 +31,13 @@
 
 <div style="width:90%;" class="center-block">
 	<p align="right" class="lead"><a href="index.jsp" >回到主页</a></p>
-	<form action="UpdateUsers">
+	<form action="UpdateProducts">
 		<table class="table table-striped table-bordered table-hover table-condensed">
 			<tr>
 				<th width="10%">编号</th>
-				<th>用户名</th>
-				<th>密码</th>
+				<th>商品号</th>
+				<th>商品名</th>
+				<th>货源</th>
 				<th width="60px"><input type="submit" name="delete_data" value="删除"/></th>
 			</tr>
 			<%
@@ -62,10 +54,10 @@
 			%>
 			<tr>
 				<td><input type="text" class="form-control" placeholder="编号" readonly></td>
-				<td><input type="text" name="new_username" class="form-control" placeholder="输入用户名"></td>
-				<td><input type="text" name="new_password" class="form-control" placeholder="输入密码"></td>
+				<td><input type="text" name="new_productcode" class="form-control" placeholder="输入商品号"></td>
+				<td><input type="text" name="new_productname" class="form-control" placeholder="输入商品名"></td>
+				<td><input type="text" name="new_productsource" class="form-control" placeholder="输入货源"></td>
 				<td><input type="submit" name="new_data" value="新增"/></td>
-
 			</tr>
 		</table>
 	</form>
