@@ -14,5 +14,6 @@
   <h1 align="center">网上购物</h1>
   <h2 align="center"><a href="ManageUsers">用户信息管理</a></h2>
   <h2 align="center"><a href="ManageProducts">商品信息管理</a></h2>
+  <h2 align="center"><a href="login.jsp">用户登录</a></h2>
   </body>
 </html>
