@@ -28,7 +28,7 @@
 %>
 <div style="width:30%;" class="center-block">
 	<p align="right" class="lead"><a href="index.jsp" >回到主页</a></p>
-	<form action="CheckUser" >
+	<form action="CheckOut" >
 		<div class="form-group">
 			<label>商品代码</label>
 			<input type="text" name="product_code" class="form-control" value="<%=request.getAttribute("product_code")%>" readonly>
@@ -44,11 +44,9 @@
 		<div class="form-group">
 			<label >购买数量</label>
 			<input type="number" name="number" class="form-control" placeholder="请输入购买数量">
-			<!--TODO:接着这儿写-->
 		</div>
-
-		<button type="submit" class="btn btn-default">登陆</button>
-		<button type="reset" class="btn btn-default">重置</button>
+		<!--TODO:应该对购买数量做检查-->
+		<button type="submit" class="btn btn-default">下单</button>
 	</form>
 </div>
 
