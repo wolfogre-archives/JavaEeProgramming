@@ -36,13 +36,12 @@ public class UpdateUsersServlet extends HttpServlet {
 	public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {
 		try{
 			if(req.getParameter("delete_data") != null){
-				List<Integer> listAllId = new ArrayList<Integer>();
-				ResultSet allId = dbDao.query("select id from user");
-				while(allId.next())
-					listAllId.add(allId.getInt("id"));
-				for(Integer id: listAllId){
-					if(req.getParameter("cb_delete_" + id) != null && req.getParameter("cb_delete_" + id).equals("on"))
-						dbDao.modify("delete from user where id = ?", id);
+				String[] idListToDelete = req.getParameterValues("cb_delete");
+				if(idListToDelete == null){
+					throw new Exception("请选择需要删除的记录");
+				}
+				for(String id: idListToDelete){
+					dbDao.modify("delete from user where id = ?", id);
 				}
 			}
 			if(req.getParameter("new_data") != null){

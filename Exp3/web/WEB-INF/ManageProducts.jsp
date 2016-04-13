@@ -48,7 +48,7 @@
 						for (String data : line) {
 							out.println("<td>" + data + "</td>");
 						}
-						out.println("<td><input  type=\"checkbox\" name=\"cb_delete_" + line[0] + "\"/></td>");
+						out.println("<td><input  type=\"checkbox\" name=\"cb_delete\" value=\"" + line[0] + "\"/></td>");
 						out.println("</tr>");
 					}
 			%>

@@ -15,5 +15,7 @@
   <h2 align="center"><a href="ManageUsers">用户信息管理</a></h2>
   <h2 align="center"><a href="ManageProducts">商品信息管理</a></h2>
   <h2 align="center"><a href="login.jsp">用户登录</a></h2>
+  <img src="http://oos.wolfogre.com/blog%2F2016%2F04%2F08%2F253%2Freference-card.jpg"/>
+  <a href="http://oos.wolfogre.com/blog%2F2016%2F04%2F08%2F253%2Freference-card.jpg">链接</a>
   </body>
 </html>
