@@ -3,6 +3,8 @@ package com.wolfogre;
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -33,14 +35,15 @@ public class CheckUserServlet extends HttpServlet {
 	}
 
 	@Override
-	public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {
+	public void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		try {
 			if (req.getParameter("username").isEmpty() || req.getParameter("password").isEmpty())
 				throw new Exception("用户名和密码不能为空");
 			ResultSet resultSet = dbDao.query("select * from user where username = ? and password = ?", req.getParameter("username"), req.getParameter("password"));
 			if (!resultSet.next())
 				throw new Exception("用户名或密码不正确");
-			req.setAttribute("user_id", resultSet.getInt("id"));
+			req.getSession().setAttribute("user_id", resultSet.getInt("id"));
+
 			RequestDispatcher requestDispatcher = req.getRequestDispatcher("/Shopping");
 			requestDispatcher.forward(req, res);
 		} catch (Exception e) {

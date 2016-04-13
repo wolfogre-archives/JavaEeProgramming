@@ -47,7 +47,14 @@ public class OrderingServlet extends HttpServlet {
 			}
 			if(id == -1)
 				throw new Exception("找不到指定的商品");
-			//TODO:需要给下一个页面参数
+			ResultSet productInfo = dbDao.query("select * from ProductTable where id = ?", id);
+			if(!productInfo.next())
+				throw new Exception("异常：商品消失了");
+			req.setAttribute("id", id);
+			req.setAttribute("product_id", id);
+			req.setAttribute("product_code", productInfo.getString("productCode"));
+			req.setAttribute("product_name", productInfo.getString("productName"));
+			req.setAttribute("product_source", productInfo.getString("productSource"));
 		}catch ( Exception e){
 			req.setAttribute("error", e.getMessage());
 		}
