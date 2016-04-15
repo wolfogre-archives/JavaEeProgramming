@@ -11,17 +11,20 @@
 	<title>下单结果</title>
 </head>
 <body>
-<h1 align="center">下单结果q</h1>
 <%
 	String error = (String)request.getAttribute("error");
-	//TODO:这里却显示error为空
 	if(error != null && !error.isEmpty()){
 %>
 <div style="width:50%; height:30px" class="center-block" align="center">
 	<p style="font-size:large;height:100%" class="bg-danger"><strong>错误：<%=error%></strong></p>
 </div>
 <%
+	} else{
+%>
+<h1 align="center">下单成功</h1>
+</body>
+<%
 	}
 %>
-</body>
+<h2 align="center"><a href="ShopRecords">查看所有订单</a></h2>
 </html>

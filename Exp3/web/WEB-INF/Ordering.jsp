@@ -29,6 +29,7 @@
 <div style="width:30%;" class="center-block">
 	<p align="right" class="lead"><a href="index.jsp" >回到主页</a></p>
 	<form action="CheckOut" >
+		<input type="hidden" name="product_id" value="<%=request.getAttribute("product_id")%>" readonly>
 		<div class="form-group">
 			<label>商品代码</label>
 			<input type="text" name="product_code" class="form-control" value="<%=request.getAttribute("product_code")%>" readonly>

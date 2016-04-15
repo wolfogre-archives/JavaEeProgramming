@@ -38,15 +38,12 @@ public class CheckOutServlet extends HttpServlet {
 	public void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		RequestDispatcher requestDispatcher;
 		try{
-			Object obj = req.getParameter("number");
-			int number = Integer.getInteger(req.getParameter("number"));
-			//TODO:obj是正常的，但是number却得不到，出现空引用异常
+			int number = Integer.parseInt(req.getParameter("number"));
 			int userId = (Integer)req.getSession().getAttribute("user_id");
-			int  productId = (Integer)req.getAttribute("product_id");
+			int  productId = Integer.parseInt(req.getParameter("product_id"));
 			dbDao.insert("insert into ShopRecords (userId, productId, number, shopDate) values(?,?,?,?)",userId,productId,number,new java.sql.Date(new java.util.Date().getTime()));
 		}catch ( Exception e){
 			req.setAttribute("error", e.getMessage());
-			//TODO:明明error被设置了
 		}
 		requestDispatcher = req.getRequestDispatcher("/WEB-INF/OrderResult.jsp");
 		requestDispatcher.forward(req, res);
