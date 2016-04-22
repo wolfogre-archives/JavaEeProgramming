@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <constant name="conststructs.devMode" value="true"/>
+    <package name="com.wolfogre" extends="struts-default">
+        <action name="ManageUsers" class="com.wolfogre.action.ManageUsersAction">
+            <result>/WEB-INF/content/ManageUsers.jsp</result>
+        </action>
+        <action name="ManageProducts" class="com.wolfogre.action.ManageProductsAction">
+            <result>/WEB-INF/content/ManageProducts.jsp</result>
+        </action>
+        <action name="Login" class="com.wolfogre.action.LoginAction">
+            <result>/WEB-INF/content/Login.jsp</result>
+        </action>
+    </package>
+</struts>
