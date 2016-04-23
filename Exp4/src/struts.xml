@@ -16,5 +16,27 @@
         <action name="Login" class="com.wolfogre.action.LoginAction">
             <result>/WEB-INF/content/Login.jsp</result>
         </action>
+        <action name="UpdateUsers" class="com.wolfogre.action.UpdateUsersAction">
+            <result type="redirect">ManageUsers.action</result>
+        </action>
+        <action name="UpdateProduct" class="com.wolfogre.action.UpdateProductsAction">
+            <result type="redirect">ManageProducts.action</result>
+        </action>
+        <action name="CheckLogin" class="com.wolfogre.action.CheckLoginAction">
+            <result type="redirect">Shop.action</result>
+            <result name="error">/WEB-INF/content/Login.jsp</result>
+        </action>
+        <action name="Shop" class="com.wolfogre.action.ShopAction">
+            <result>/WEB-INF/content/Shop.jsp</result>
+        </action>
+        <action name="Order" class="com.wolfogre.action.OrderAction">
+            <result>/WEB-INF/content/Order.jsp</result>
+        </action>
+        <action name="CheckOut" class="com.wolfogre.action.CheckOutAction">
+            <result>/WEB-INF/content/CheckOut.jsp</result>
+        </action>
+        <action name="ShopRecords" class="com.wolfogre.action.ShopRecordsAction">
+            <result>/WEB-INF/content/ShopRecords.jsp</result>
+        </action>
     </package>
 </struts>

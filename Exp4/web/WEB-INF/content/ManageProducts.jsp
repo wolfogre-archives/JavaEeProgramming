@@ -1,5 +1,6 @@
 <%@ page import="com.wolfogre.domain.Product" %>
-<%@ page import="java.util.List" %><%--
+<%@ page import="java.util.List" %>
+<%@ page import="com.wolfogre.domain.User" %><%--
   Created by IntelliJ IDEA.
   User: Jason Song(wolfogre.com)
   Date: 2016/4/22
@@ -13,11 +14,11 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="/Exp4/css/bootstrap.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css">
 	<!-- DataTables CSS -->
-	<link rel="stylesheet" type="text/css" href="/Exp4/DataTables-1.10.11/css/jquery.dataTables.css">
-	<script type="text/javascript" charset="utf8" src="/Exp4/DataTables-1.10.11/js/jquery.js"></script>
-	<script type="text/javascript" charset="utf8" src="/Exp4/DataTables-1.10.11/js/jquery.dataTables.js"></script>
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/DataTables-1.10.11/css/jquery.dataTables.css">
+	<script type="text/javascript" charset="utf8" src="${pageContext.request.contextPath}/DataTables-1.10.11/js/jquery.js"></script>
+	<script type="text/javascript" charset="utf8" src="${pageContext.request.contextPath}/DataTables-1.10.11/js/jquery.dataTables.js"></script>
 	<title>商品管理</title>
 	<script type="text/javascript" class="init">
 		$(document).ready(function() {
@@ -47,38 +48,51 @@
 					}
 				}
 			});
-			});
+		});
 	</script>
 </head>
+<div class="page-header">
+	<h1 class="text-center">商品管理</h1>
+</div>
 <body>
-<table id="product" class="display" cellspacing="0" width="100%">
-	<thead>
-	<tr>
-		<th>编号</th>
-		<th>商品代码</th>
-		<th>商品名称</th>
-		<th>商品产地</th>
-	</tr>
-	</thead>
+<form action="UpdateProduct.action" method="get">
+	<table id="product" class="display" cellspacing="0" width="100%">
+		<thead>
+		<tr>
+			<th>商品编号</th>
+			<th>商品代码</th>
+			<th>商品名称</th>、
+			<th>商品产地</th>
+			<th><input type="submit" name="delete_data" value="删除"/></th>
+		</tr>
+		</thead>
 
-	<tbody>
+		<tbody>
 
-<%
-	List<Product> productList = (List<Product>)request.getAttribute("productList");
-	for(Product product : productList)
-	{
-%>
-	<tr>
-		<td><%=product.getId()%></td>
-		<td><%=product.getProductCode()%></td>
-		<td><%=product.getProductName()%></td>
-		<td><%=product.getProductSource()%></td>
-	</tr>
-<%
-	}
-%>
-
-	</tbody>
-</table>
+		<%
+			List<Product> productList = (List<Product>)request.getAttribute("productList");
+			for(Product product : productList)
+			{
+		%>
+		<tr>
+			<td><%=product.getId()%></td>
+			<td><%=product.getProductCode()%></td>
+			<td><%=product.getProductName()%></td>
+			<td><%=product.getProductSource()%></td>
+			<td><input  type="checkbox" name="cb_delete" value="<%=product.getId()%>"/></td>
+		</tr>
+		<%
+			}
+		%>
+		</tbody>
+		<tr>
+			<td><input type="text" class="form-control" placeholder="编号" readonly></td>
+			<td><input type="text" name="new_product_code" class="form-control" placeholder="输入商品代码"></td>
+			<td><input type="text" name="new_product_name" class="form-control" placeholder="输入商品名称"></td>
+			<td><input type="text" name="new_product_source" class="form-control" placeholder="输入商品产地"></td>
+			<td><input type="submit" name="new_data" value="新增"/></td>
+		</tr>
+	</table>
+</form>
 </body>
 </html>

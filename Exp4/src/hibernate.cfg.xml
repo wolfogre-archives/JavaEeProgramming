@@ -33,5 +33,7 @@
     <property name="hibernate.format_sql">true</property>
     <!-- 罗列所有持久化类的类名 -->
     <mapping class="com.wolfogre.domain.Product"/>
+    <mapping class="com.wolfogre.domain.User"/>
+    <mapping class="com.wolfogre.domain.ShopRecord"/>
   </session-factory>
 </hibernate-configuration>
