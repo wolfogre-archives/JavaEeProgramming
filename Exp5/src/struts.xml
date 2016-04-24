@@ -5,4 +5,26 @@
         "http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
+    <constant name="conststructs.devMode" value="true"/>
+    <package name="com.wolfogre" extends="struts-default">
+        <default-action-ref name="login"> </default-action-ref>
+        <action name="login" class="com.wolfogre.action.UserManageAction" method="login">
+            <result>WEB-INF/context/login.jsp</result>
+        </action>
+        <action name="check-login" class="com.wolfogre.action.UserManageAction" method="checkLogin">
+            <result name="success" type="redirect">show-info.action</result>
+            <result name="error" type="chain">login</result>
+        </action>
+        <action name="show-info" class="com.wolfogre.action.UserManageAction" method="showInfo">
+            <result name="success">WEB-INF/context/show-info.jsp</result>
+            <result name="error" type="chain">login</result>
+        </action>
+        <action name="register" class="com.wolfogre.action.UserManageAction" method="register">
+            <result>WEB-INF/context/register.jsp</result>
+        </action>
+        <action name="check-register" class="com.wolfogre.action.UserManageAction" method="checkRegister">
+            <result name="success">WEB-INF/context/register-result.jsp</result>
+            <result name="error" type="chain">register</result>
+        </action>
+    </package>
 </struts>

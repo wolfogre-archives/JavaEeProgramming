@@ -2,9 +2,7 @@ package com.wolfogre.action;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-import com.wolfogre.domain.Product;
 import com.wolfogre.domain.User;
-import org.apache.struts2.ServletActionContext;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
