@@ -14,6 +14,7 @@ public class User {
 	private int id;
 	private String username;
 	private String password;
+	private int level;
 
 	public String getUsername() {
 		return username;
@@ -39,5 +40,11 @@ public class User {
 		this.password = password;
 	}
 
+	public int getLevel() {
+		return level;
+	}
 
+	public void setLevel(int level) {
+		this.level = level;
+	}
 }
