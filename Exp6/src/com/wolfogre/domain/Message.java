@@ -2,9 +2,7 @@ package com.wolfogre.domain;
 
 import org.hibernate.annotations.Type;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Calendar;
 
 /**
@@ -14,6 +12,7 @@ import java.util.Calendar;
 @Table(name = "Message")
 public class Message {
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private int userId;
 	private Calendar time;

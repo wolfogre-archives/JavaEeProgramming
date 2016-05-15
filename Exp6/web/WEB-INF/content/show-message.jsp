@@ -78,24 +78,40 @@
 <table id="data_table" class="display">
 	<thead>
 	<tr>
-		<th>留言时间</th>
-		<th>留言用户</th>
+		<th width="150px">留言时间</th>
+		<th width="100px">留言用户</th>
 		<th>留言内容</th>
 	</tr>
 	</thead>
 	<tbody>
 
-	<tr>
+
 <%
+
 	for(Message m : messageList) {
 %>
+	<tr>
 		<td><%=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(m.getTime().getTime())%></td>
-		<td><%=userMap.get(m.getId())%></td>
+		<td><%=userMap.get(m.getUserId())%></td>
 		<td><%=m.getContent()%></td>
+	</tr>
 <%
 	}
 %>
-	</tr>
 	</tbody>
 </table>
+<div class="panel panel-default center-block" style="width:400px;padding:30px">
+	<form action="add-message.action">
+		<div class="form-group">
+			<label for="message">留言</label>
+			<textarea class="form-control" name="message" id="message" placeholder="请输入留言" required></textarea>
+		</div>
+		<div class="text-center">
+			<button type="submit" class="btn btn-success">&nbsp;&nbsp;&nbsp;&nbsp;发&nbsp;&nbsp;&nbsp;表&nbsp;&nbsp;&nbsp;&nbsp;</button>
+			&nbsp;&nbsp;&nbsp;&nbsp;
+			<button type="reset" class="btn btn-warning">&nbsp;&nbsp;&nbsp;&nbsp;重&nbsp;&nbsp;&nbsp;置&nbsp;&nbsp;&nbsp;&nbsp;</button>
+		</div>
+
+	</form>
+</div>
 </html>

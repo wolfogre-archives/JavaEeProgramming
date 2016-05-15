@@ -25,5 +25,8 @@
         <action name="show-message" class="com.wolfogre.action.MessageAction" method="showMessage">
             <result name="success">WEB-INF/content/show-message.jsp</result>
         </action>
+        <action name="add-message" class="com.wolfogre.action.MessageAction" method="addMessage">
+            <result type="redirectAction">show-message</result>
+        </action>
     </package>
 </struts>
